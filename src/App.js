@@ -105,12 +105,12 @@ function PersonCard({ persons }) {
       </div>
     );
   } else if (persons.length >= 1 && persons.length <= 3) {
-    personCard = persons.map((userObject, index) => {
+    personCard = persons.map((personObject, index) => {
       return (
         <div key={index + 1} className={` card card-${index + 1}`}>
-          <p>{userObject.name}</p>
-          <p>{userObject.profession}</p>
-          <p>{userObject.email}</p>
+          <p>{personObject.name}</p>
+          <p>{personObject.profession}</p>
+          <p>{personObject.email}</p>
         </div>
       );
     });
