@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Radium from "radium";
+import style from "./cards.module.css";
 import "./App.css";
 
 const inputFieldStyle = {
@@ -25,11 +25,16 @@ const ShowPerson = styled.button`
   outline: none;
   background-color: #ffffff;
   padding: 15px 30px;
-  display: inline-block;
   color: #808080;
   &:hover {
     background-color: grey;
     color: white;
+  }
+  @media (max-width: 700px) {
+    & {
+      font-size: 10px;
+      min-width: 150px;
+    }
   }
 `;
 
@@ -44,9 +49,24 @@ const AppDiv = styled.div`
 `;
 
 const FormDiv = styled.div`
-  width: 400px;
   display: flex;
   justify-content: center;
+  @media (max-width: 700px) {
+    & {
+      display: flex;
+      flex-direction: column;
+      font-size: 10px;
+    }
+    & input {
+      min-width: 150px;
+    }
+    & input::placeholder {
+      font-size: 10px;
+    }
+    & input:not(:last-child) {
+      margin-bottom: 3px;
+    }
+  }
 `;
 
 function App() {
@@ -88,7 +108,7 @@ function App() {
         />
       </FormDiv>
       <ShowPerson onClick={onSubmit}>show person card</ShowPerson>
-      <div className="cardsContainer">
+      <div className={style.cardsContainer}>
         <PersonCard persons={persons} />
       </div>
     </AppDiv>
@@ -107,8 +127,11 @@ function PersonCard({ persons }) {
   } else if (persons.length >= 1 && persons.length <= 3) {
     personCard = persons.map((personObject, index) => {
       return (
-        <div key={index + 1} className={` card card-${index + 1}`}>
-          <p>{personObject.name}</p>
+        <div
+          key={index + 1}
+          className={[style["card".concat(index + 1)], style.card].join(" ")}
+        >
+          <p className={style.red}>{personObject.name}</p>
           <p>{personObject.profession}</p>
           <p>{personObject.email}</p>
         </div>
@@ -125,4 +148,4 @@ function PersonCard({ persons }) {
   return personCard;
 }
 
-export default Radium(App);
+export default App;
