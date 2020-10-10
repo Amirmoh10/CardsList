@@ -1,6 +1,6 @@
 ## App Live Demo
 
-Click on this [link](https://hardcore-carson-39dc06.netlify.app/) and test it. 
+Click on this [link](https://heuristic-murdock-8672cf.netlify.app/) and test it. 
 
 ## Available Scripts
 
